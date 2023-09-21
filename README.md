@@ -12,7 +12,7 @@
 
 ### Project Structure
 
-```
+```md
 . README.md                                             # You are here
 . sprintdoc                                             # contains information about project sprints
 . docs
