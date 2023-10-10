@@ -1,6 +1,7 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI
 import aiosqlite
 from .routers import main, user, item
+
 
 app = FastAPI()
 
@@ -18,7 +19,9 @@ async def make_db(path: str):
     async with aiosqlite.connect(path) as db:
         """ Note SQLite doesn't support varchar or uuid types. 
         Just use normal 128-length uuids and 72-length bcrypt."""
-        # TODO: Write the list parser. SQLite doesn't support TEXT[], but we can do CSV with it
+        # TODO: Write the list parser. SQLite doesn't support TEXT[]. Maybe use CSV? It's hard to parse with the
+        #  dict_factory though
+        # Alternatively, send them with the request body and store as an image table or other datatype entirely
         await db.execute("CREATE TABLE IF NOT EXISTS account ("
                          "id TEXT PRIMARY KEY NOT NULL,"
                          "name_f TEXT NOT NULL,"
@@ -36,31 +39,20 @@ async def make_db(path: str):
                          "prefs TEXT[],"
                          "FOREIGN KEY(id) REFERENCES account(id))")
         await db.execute("CREATE TABLE IF NOT EXISTS item ("
-                         "id ROWID,"  # rowid, see https://www.sqlite.org/autoinc.html
+                         "item_id INTEGER PRIMARY KEY,"  # rowid, see https://www.sqlite.org/autoinc.html
                          "name TEXT NOT NULL,"
-                         "images TEXT[],"
+                         "image TEXT,"
                          "price REAL,"
                          "description TEXT,"
                          "seller_id TEXT,"
-                         "tags TEXT[],"
+                         "tag TEXT,"
                          "sku TEXT"
                          ")")
         await db.execute("CREATE TABLE IF NOT EXISTS listing ("
-                         "id INTEGER NOT NULL,"
+                         "item_id INTEGER NOT NULL,"
                          "name TEXT NOT NULL,"
                          "thumbnail TEXT,"
                          "price REAL,"
-                         "tags TEXT[],"
-                         "FOREIGN KEY(id) REFERENCES item(id)"
+                         "tag TEXT,"
+                         "FOREIGN KEY(item_id) REFERENCES item(item_id)"
                          ")")
-
-        await db.execute("INSERT INTO customer VALUES ('123', 'john', 'doe', NULL, NULL)")
-        await db.execute("INSERT INTO account VALUES ('123', 'john', 'doe', 'jd@jd.com', '1234', 'addr', 'phone')")
-
-        async with db.execute("SELECT * FROM account") as cur:
-            async for x in cur:
-                print(x)
-
-        async with db.execute("SELECT * FROM customer") as cur:
-            async for x in cur:
-                print(x)
