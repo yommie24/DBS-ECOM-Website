@@ -23,21 +23,21 @@ async def make_db(path: str):
         #  dict_factory though
         # Alternatively, send them with the request body and store as an image table or other datatype entirely
         await db.execute("CREATE TABLE IF NOT EXISTS account ("
-                         "id TEXT PRIMARY KEY NOT NULL,"
+                         "acct_id TEXT PRIMARY KEY NOT NULL,"
                          "name_f TEXT NOT NULL,"
                          "name_l TEXT,"
                          "email TEXT NOT NULL,"
                          "password TEXT NOT NULL,"
-                         "address TEXT[],"
-                         "contact TEXT[]"
+                         "address TEXT,"
+                         "contact TEXT"
                          ")")
         await db.execute("CREATE TABLE IF NOT EXISTS customer ("
-                         "id TEXT NOT NULL,"
+                         "user_id TEXT NOT NULL,"
                          "name_f TEXT NOT NULL,"
                          "name_l TEXT,"
                          "cart TEXT[],"
                          "prefs TEXT[],"
-                         "FOREIGN KEY(id) REFERENCES account(id))")
+                         "FOREIGN KEY(user_id) REFERENCES account(acct_id))")
         await db.execute("CREATE TABLE IF NOT EXISTS item ("
                          "item_id INTEGER PRIMARY KEY,"  # rowid, see https://www.sqlite.org/autoinc.html
                          "name TEXT NOT NULL,"
