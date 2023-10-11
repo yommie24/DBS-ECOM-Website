@@ -2,12 +2,21 @@ from pydantic import BaseModel
 import uuid
 
 
-class UserRegister(BaseModel):
-    name: str
+class AccountNoId(BaseModel):
+    name_f: str
+    name_l: str = None
+    email: str
+    password: str
+    address: str = None
+    contact: str = None
 
 
-class User:
-    pass
+class Account(AccountNoId):
+    acct_id: uuid.UUID
+
+
+
+
 
 
 class ItemNoId(BaseModel):
