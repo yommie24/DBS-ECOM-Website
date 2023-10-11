@@ -21,6 +21,8 @@ async def make_db(path: str):
         Just use normal 128-length uuids and 72-length bcrypt."""
         # TODO: Write the list parser. SQLite doesn't support TEXT[]. Maybe use CSV? It's hard to parse with the
         #  dict_factory though
+        # No, just make a function to separate each address/tag with an uncommon symbol,
+        # and parse it later
         # Alternatively, send them with the request body and store as an image table or other datatype entirely
         await db.execute("CREATE TABLE IF NOT EXISTS account ("
                          "acct_id TEXT PRIMARY KEY NOT NULL,"
