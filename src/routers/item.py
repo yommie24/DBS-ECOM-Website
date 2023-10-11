@@ -1,17 +1,21 @@
 from fastapi import APIRouter, HTTPException
 import aiosqlite
-import sqlite3
 from ..models import datamodels
 from ..util import utils
 
 router = APIRouter(
-    prefix="/item"
+    prefix="/items"
 )
 
 
-@router.get("/{item_id}")
+@router.get("/item/{item_id}")
 async def find(item_id: int):
     return await get_item(item_id)
+
+
+@router.get("/all")
+async def get_all_listings():
+    return await fetch_all_listings()
 
 
 @router.post("/new", status_code=201)
@@ -24,21 +28,15 @@ async def list_item(item: datamodels.Item):
     return f"Your item was successfully listed with id: {await make_listing(item)}"
 
 
-@router.get("/all")
-async def get_all_listings() -> list[datamodels.ListedItem]:
-    return await fetch_all_listings()
-
-
 async def get_item(item_id: int) -> datamodels.Item:
     async with aiosqlite.connect("./testing.db") as db:
         db.row_factory = utils.dict_factory
-        try:
-            cursor = await db.execute("SELECT * FROM item WHERE item_id = ?", (item_id,))
-            result = await cursor.fetchone()
-        except sqlite3.OperationalError:  # item table doesn't exist
-            pass
+        cursor = await db.execute("SELECT * FROM item WHERE item_id = ?", (item_id,))
+        result = await cursor.fetchone()
+        # except sqlite3.OperationalError:  # item table doesn't exist TODO: application-wide logging
+        #     pass
         if not result:
-            return HTTPException(status_code=404, detail=f"An item with id {item_id} was not found.")
+            raise HTTPException(status_code=404, detail=f"An item with id {item_id} was not found.")
         return datamodels.Item.model_validate(result)
 
 
