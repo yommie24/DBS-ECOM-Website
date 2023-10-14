@@ -1,5 +1,7 @@
-from fastapi import FastAPI
 import aiosqlite
+import dotenv
+from fastapi import FastAPI
+
 from .routers import main, user, item
 
 
@@ -12,23 +14,25 @@ app.include_router(item.router)
 
 @app.on_event("startup")
 async def start():
-    await make_db("./testing.db")
+    dotenv.load_dotenv(".env")
+    await make_db("./prime.db")
 
 
 async def make_db(path: str):
     async with aiosqlite.connect(path) as db:
-        """ Note SQLite doesn't support varchar or uuid types. 
-        Just use normal 128-length uuids and 72-length bcrypt."""
-        # TODO: Write the list parser. SQLite doesn't support TEXT[]. Maybe use CSV? It's hard to parse with the
-        #  dict_factory though
-        # No, just make a function to separate each address/tag with an uncommon symbol,
+        """Creates an SQLite database with the outlined tables if one, and each table, does not exist already.. """
+        # TODO: Write the list parser. SQLite doesn't support TEXT[].
+        # Just make a function to separate each address/tag with an uncommon symbol,
         # and parse it later
         # Alternatively, send them with the request body and store as an image table or other datatype entirely
+        # Note SQLite doesn't support varchar or uuid types. Just use normal 128-length uuids and 72-length bcrypt.
+        # TODO: consider removing the listing table if the performance is good enough to fetch everything
+        # TODO: Consider the same for customer, or adding seller info to customer
         await db.execute("CREATE TABLE IF NOT EXISTS account ("
                          "acct_id TEXT PRIMARY KEY NOT NULL,"
                          "name_f TEXT NOT NULL,"
                          "name_l TEXT,"
-                         "email TEXT NOT NULL,"
+                         "email TEXT NOT NULL UNIQUE,"
                          "password TEXT NOT NULL,"
                          "address TEXT,"
                          "contact TEXT"
