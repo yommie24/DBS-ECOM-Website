@@ -1,10 +1,12 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from fastapi.security import OAuth2PasswordBearer
 import aiosqlite
 from ..models import datamodels
 from ..util import utils
+from typing import Annotated
 
 router = APIRouter(
-    prefix="/items"
+    prefix="/items",
 )
 
 
@@ -19,7 +21,9 @@ async def get_all_listings():
 
 
 @router.post("/new", status_code=201)
-async def create(item: datamodels.ItemNoId):
+async def create(item: datamodels.ItemNoId, token: Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="token"))]):
+    sel_id = await utils.decode_token(token)
+    item.seller = sel_id.user_id
     return f"Your item was successfully created with id: {await make_item(item)}"
 
 
@@ -29,7 +33,7 @@ async def list_item(item: datamodels.Item):
 
 
 async def get_item(item_id: int) -> datamodels.Item:
-    async with aiosqlite.connect("./testing.db") as db:
+    async with aiosqlite.connect("./prime.db") as db:
         db.row_factory = utils.dict_factory
         cursor = await db.execute("SELECT * FROM item WHERE item_id = ?", (item_id,))
         result = await cursor.fetchone()
@@ -41,7 +45,7 @@ async def get_item(item_id: int) -> datamodels.Item:
 
 
 async def make_item(item) -> int:
-    async with aiosqlite.connect("./testing.db") as db:
+    async with aiosqlite.connect("./prime.db") as db:
         cursor = await db.execute("INSERT INTO item (name, image, price, description, seller_id, tag, sku) "
                                   "VALUES (?, ?, ?, ?, ?, ?, ?)", (
                                       item.name, item.image, item.price, item.desc, str(item.seller), item.tag, item.sku
@@ -51,7 +55,7 @@ async def make_item(item) -> int:
 
 
 async def make_listing(item):
-    async with aiosqlite.connect("./testing.db") as db:
+    async with aiosqlite.connect("./prime.db") as db:
         cursor = await db.execute("INSERT INTO listing VALUES (?, ?, ?, ?, ?)",
                                   (item.item_id, item.name, item.image, item.price, item.tag))
         await db.commit()
@@ -59,7 +63,7 @@ async def make_listing(item):
 
 
 async def fetch_all_listings():
-    async with aiosqlite.connect("./testing.db") as db:
+    async with aiosqlite.connect("./prime.db") as db:
         db.row_factory = utils.dict_factory
         cursor = await db.execute("SELECT * FROM listing")
         return [datamodels.ListedItem.model_validate(listing) for listing in await cursor.fetchall()]
