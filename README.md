@@ -49,9 +49,16 @@
    (If your Python 3 binary isn't `python`, use what you have eg: for `py`, use `py -m pip ...`) <br>
    (If pip is installed to the system, leave off the call to Python)
    
+
+### Configure
+
+7. Copy `.env.example` to `.env`
+8. Generate a secret using `openssl rand -hex 32`
+9. Paste this secret next to the `OPENSSL_SECRET =` key and save the file
+
+
 ### Execute Uvicorn via the launcher
 
-
-7. Run launch.py with `python launch.py`. 
+10. Run launch.py with `python launch.py`. 
 
 *A production-ready execution method is planned for a later date*
