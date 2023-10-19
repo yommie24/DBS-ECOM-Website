@@ -1,11 +1,13 @@
 import aiosqlite
 import dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, staticfiles
 
 from .routers import main, user, item
 
 
 app = FastAPI()
+app.mount("/static", staticfiles.StaticFiles(directory="src/Website"), name="page")
+
 
 app.include_router(main.router)
 app.include_router(user.router)

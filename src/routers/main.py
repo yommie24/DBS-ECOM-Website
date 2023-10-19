@@ -1,9 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, responses
 
 router = APIRouter()
 
 
 @router.get("/")
 async def return_root():
-    return "See the docs at /docs or /redoc"
+    return responses.RedirectResponse("static/PrimeTime.html")
 
