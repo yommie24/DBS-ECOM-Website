@@ -27,7 +27,6 @@ async def get_self(token: Annotated[str, Depends(oauth2_scheme)]) -> datamodels.
 @router.post("/token", response_model=datamodels.Token)
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     # TODO: Flatten this to check for and handle various errors (wrong pass, user exists, etc)
-    print("hi")
     if not validate_pass(form_data.password, await get_password(form_data.username)):
         raise HTTPException(
             status_code=401, detail="Incorrect username or password",
