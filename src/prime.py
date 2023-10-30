@@ -23,11 +23,6 @@ async def start():
 async def make_db(path: str):
     async with aiosqlite.connect(path) as db:
         """Creates an SQLite database with the outlined tables if one, and each table, does not exist already.. """
-        # TODO: Write the list parser. SQLite doesn't support TEXT[].
-        # Just make a function to separate each address/tag with an uncommon symbol,
-        # and parse it later
-        # Alternatively, send them with the request body and store as an image table or other datatype entirely
-        # Note SQLite doesn't support varchar or uuid types. Just use normal 128-length uuids and 72-length bcrypt.
         # TODO: consider removing the listing table if the performance is good enough to fetch everything
         # TODO: Consider the same for customer, or adding seller info to customer
         await db.execute("CREATE TABLE IF NOT EXISTS account ("
