@@ -59,6 +59,6 @@ class ListedItem(BaseModel):
     These only appear on the browse/search page. The full item is used for the item's own page."""
     item_id: int
     name: str
-    thumbnail: str | None = None
+    thumbnail: str
     price: float
     tag: str | None = None
