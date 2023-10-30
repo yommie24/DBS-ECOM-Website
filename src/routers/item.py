@@ -17,7 +17,15 @@ async def find(item_id: int):
 
 @router.get("/all")
 async def get_all_listings():
+    """Returns all listings. NOT items."""
     return await fetch_all_listings()
+
+
+@router.get("/all-filter")
+async def get_all_listings_f(min_price: float = None, max_price: float = None, tags: str = None):
+    """[Unfinished] Returns filtered listings, using optional parameters"""
+    #NOTE: Should probably use "man" and "women" as tags, since the LIKE statement has leading and trailing wildcards
+    return await fetch_listings_filter(min_price, max_price, tags)
 
 
 @router.post("/new", status_code=201)
@@ -67,3 +75,24 @@ async def fetch_all_listings():
         db.row_factory = utils.dict_factory
         cursor = await db.execute("SELECT * FROM listing")
         return [datamodels.ListedItem.model_validate(listing) for listing in await cursor.fetchall()]
+
+
+async def fetch_listings_filter(price_min, price_max, tags):
+    async with aiosqlite.connect("./prime.db") as db:
+        db.row_factory = utils.dict_factory
+        statement = "SELECT * FROM listing WHERE item_id > 0"
+        params = []
+        if price_min:
+            statement += " AND price > ?"
+            params.append(price_min)
+        if price_max:
+            statement += " AND price < ?"
+            params.append(price_max)
+        if tags:
+            for tag in tags:
+                statement += " AND tag LIKE ?"
+                params.append(f"%{tag}%")
+        cursor = await db.execute(statement, tuple(params))
+        return [datamodels.ListedItem.model_validate(listing) for listing in await cursor.fetchall()]
+
+
