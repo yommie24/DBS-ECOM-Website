@@ -28,6 +28,12 @@ async def get_all_listings_f(min_price: float = None, max_price: float = None, t
     return await fetch_listings_filter(min_price, max_price, tags)
 
 
+@router.get("/allitems")
+async def get_all_items(token: Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="token"))]):
+    """Returns all items. Requires auth, as this is an admin function."""
+    return await fetch_all_items()
+
+
 @router.post("/new", status_code=201)
 async def create(item: datamodels.ItemNoId, token: Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="token"))]):
     sel_id = await utils.decode_token(token)
@@ -96,3 +102,8 @@ async def fetch_listings_filter(price_min, price_max, tags):
         return [datamodels.ListedItem.model_validate(listing) for listing in await cursor.fetchall()]
 
 
+async def fetch_all_items():
+    async with aiosqlite.connect("./prime.db") as db:
+        db.row_factory = utils.dict_factory
+        cursor = await db.execute("SELECT * FROM item")
+        return [datamodels.Item.model_validate(item) for item in await cursor.fetchall()]
