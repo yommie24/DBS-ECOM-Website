@@ -37,7 +37,7 @@ async def get_all_items(token: Annotated[str, Depends(OAuth2PasswordBearer(token
 @router.post("/new", status_code=201)
 async def create(item: datamodels.ItemNoId, token: Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="token"))]):
     sel_id = await utils.decode_token(token)
-    item.seller = sel_id.user_id
+    item.seller_id = sel_id.user_id
     return f"Your item was successfully created with id: {await make_item(item)}"
 
 
@@ -47,11 +47,11 @@ async def list_item(item: datamodels.Item):
 
 
 @router.delete("/del/{item_id}")
-async def get_all_items(item_id: int, token: Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="token"))]):
+async def del_item(item_id: int, token: Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="token"))]):
     """Delete an item. If the item does not exist, will still say it was deleted."""
     item = await get_item(item_id)
     seller = await utils.decode_token(token)
-    if item.seller == seller.user_id:
+    if str(item.seller_id) == seller.user_id:
         try:
             await delete_item(item_id)
             return f"Item {item_id} was deleted."
@@ -77,7 +77,7 @@ async def make_item(item) -> int:
     async with aiosqlite.connect("./prime.db") as db:
         cursor = await db.execute("INSERT INTO item (name, image, price, description, seller_id, tag, sku) "
                                   "VALUES (?, ?, ?, ?, ?, ?, ?)", (
-                                      item.name, item.image, item.price, item.desc, str(item.seller), item.tag, item.sku
+                                      item.name, item.image, item.price, item.desc, item.seller, item.tag, item.sku,
                                     ))
         await db.commit()
         return cursor.lastrowid
