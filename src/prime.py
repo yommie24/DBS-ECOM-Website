@@ -47,7 +47,7 @@ async def make_db(path: str):
                          "image TEXT,"
                          "price REAL,"
                          "description TEXT,"
-                         "seller_id TEXT,"
+                         "seller_id TEXT NOT NULL,"
                          "tag TEXT,"
                          "sku TEXT"
                          ")")
