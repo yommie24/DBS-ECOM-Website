@@ -46,6 +46,21 @@ async def list_item(item: datamodels.Item):
     return f"Your item was successfully listed with id: {await make_listing(item)}"
 
 
+@router.delete("/del/{item_id}")
+async def get_all_items(item_id: int, token: Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="token"))]):
+    """Delete an item. If the item does not exist, will still say it was deleted."""
+    item = await get_item(item_id)
+    seller = await utils.decode_token(token)
+    if item.seller == seller.user_id:
+        try:
+            await delete_item(item_id)
+            return f"Item {item_id} was deleted."
+        except Exception as e:  # goodness gracious
+            raise HTTPException(status_code=500, detail=e)
+    else:
+        raise HTTPException(status_code=401, detail="You cannot edit or delete another seller's items.")
+
+
 async def get_item(item_id: int) -> datamodels.Item:
     async with aiosqlite.connect("./prime.db") as db:
         db.row_factory = utils.dict_factory
@@ -107,3 +122,12 @@ async def fetch_all_items():
         db.row_factory = utils.dict_factory
         cursor = await db.execute("SELECT * FROM item")
         return [datamodels.Item.model_validate(item) for item in await cursor.fetchall()]
+
+
+async def delete_item(item_id: int):
+    async with aiosqlite.connect("./prime.db") as db:
+        # Stop repeating code. Create connection/pool on module load,
+        # if modules each having them doesn't cause conflicts. Else, maybe store in the FastAPI() if APIRouter
+        # has access
+        async with db.execute("DELETE FROM item WHERE item_id = ?", (item_id,)):
+            await db.commit()
