@@ -34,7 +34,7 @@
 }
 
 .checked {
-    color: #ccee66;
+    color: #74F854;
 }
 body {
     margin: 0;
@@ -159,14 +159,14 @@ header{
 }
 .btn {
     padding: 0.7em 1.5em;
-    background: #a3be52;
+    background: #74F854;
     border-radius: 3em;
     letter-spacing: 1px;
     font-size: 1em;
     transition: 0.3s;
 }
 .btn:hover {
-    background: #6e9623;
+    background: #74F854;
 }
 .body > div:nth-chid(2) {
     display: flex;
