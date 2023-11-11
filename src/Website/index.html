@@ -104,7 +104,7 @@
         top: 0;
         right: -10em;
         background: linear-gradient(
-            45deg, #ccee66, #6e9623
+            45deg, #74F854, #6e9623
         );
         width: 100%;
         height: 120%;
@@ -152,7 +152,7 @@
     }
     .btn {
         padding: 0.7em 1.5em;
-        background: #a3be52;
+        background: #74FF54;
         border-radius: 3em;
         letter-spacing: 1px;
         font-size: 1em;
@@ -171,7 +171,7 @@
     }
     .body img {
         width: 45em;
-        transfrom: rotate(-25deg);
+        transform: rotate(-25deg);
         filter: drop-shadow(
             30px 45px 40px #161616
         );
@@ -201,7 +201,7 @@
     }
     .footer .play-icon:hover{
         background: rgba( 255, 255, 255, 0.5);
-        box-shawdow: 0px 0px 0px transparent;
+        box-shadow: 0px 0px 0px transparent;
 
     }
     
@@ -266,16 +266,37 @@
     menuBtn.addEventListener("click", () => {
         menu.classList.toggle('nav-toggle');
     });
+    // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCKzFh3OMZdU0JF2ic8imiGV5VLA4rPxLE",
+    authDomain: "primetime-1cf4d.firebaseapp.com",
+    projectId: "primetime-1cf4d",
+    storageBucket: "primetime-1cf4d.appspot.com",
+    messagingSenderId: "30980230047",
+    appId: "1:30980230047:web:ebee6f290ca2d497618baa",
+    measurementId: "G-SW8V5QLW94"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
 <header>
     <nav>
        <div class = "container">
         <div>
-            <a href="https://ibb.co/bBJxkjY"><img src="https://i.ibb.co/bBJxkjY/IMG-4576-removebg-preview.png" alt="logo.png" border="0" height="50px" width="50px" style=""></a>
+            <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="50px" width="50px"></a>
             <div class="menu">
                 <ul>
                     <li>
-                        <A HREF="./browse.html">Browsing</A>
+                        <A HREF="browse.html">Browsing</A>
                     </li>
                     <li>
                         <a href="#">Men</a>
@@ -292,7 +313,7 @@
                 </ul>
                 <form>
                     <div class = "search-icon">
-                        <i class="fas fas fa-search"></i>
+                        &#128270;
                     </div>
                     <input
                         type="text"
@@ -300,8 +321,8 @@
                         placeholder="Search. . ."
                     />
                     <button class="nav-btn">
-                        <i class=""fas fa-cart-plus"></i>
-                        <img src="https://i.ibb.co/bBJxkjY/IMG-4576-removebg-preview.png" alt="logo.png" border="0" height="25px" width="25px" style="">
+                        <i class="fas fa-cart-plus"></i>
+                        <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="25px" width="25px">
                     </button>
                 </form>
             </div> 
@@ -329,7 +350,7 @@
         <a href="#" class="btn">Learn More</a>
     </div>
     <div>
-        <a href="https://imgbb.com/"><img src="https://i.ibb.co/TWwhx3K/eef10c9cfc937ea3fcd0a62d018cd21d-removebg-preview.png" alt="placeholdershoe" border="0" width="200px" height="500px"></a>
+        <img src="https://i.ibb.co/v40VmPs/ezgif-com-webp-to-jpg-2-removebg.png" alt="placeholdershoe" border="0" width="100px" height="500px"></a>
     </div>
 
     <div class="footer">
@@ -338,12 +359,7 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-        <div class ="watch">
-            <div class="play-icon">
-                <i class="fas fas fa-play"></i>
-            </div>
-            <h3>Preview</h3>
-        </div>
+        
     </div>
 </header>
 </html>
