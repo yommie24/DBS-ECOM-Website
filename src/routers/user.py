@@ -24,6 +24,22 @@ async def get_self(token: Annotated[str, Depends(oauth2_scheme)]) -> datamodels.
     return await get_customer_from_id(account)
 
 
+@router.post("/cart")
+async def add_to_cart(token: Annotated[str, Depends(oauth2_scheme)], item_id: int, quantity: int = 1):
+    """Add {quantity} items to the logged in user's cart. If negative, the item is removed (not implemented)."""
+    account = await utils.decode_token(token)
+    me = await get_customer_from_id(account)
+    async with aiosqlite.connect("./prime.db") as db:  # wow, I use this exact line in every function!
+        if not me.cart:
+            await db.execute("UPDATE customer SET cart = ? WHERE user_id = ?", (str(item_id) + ",", me.user_id))
+            await db.commit()
+        elif me.cart[:1] != ",":            # making things work for the presentation
+            await db.execute("UPDATE customer SET cart = ? WHERE user_id = ?", (str(item_id) + ",", me.user_id))
+        else:
+            await db.execute("UPDATE customer SET cart = ? WHERE user_id = ?", (me.cart + str(item_id) + ",", me.user_id))
+            await db.commit()
+
+
 @router.post("/token", response_model=datamodels.Token)
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     # TODO: Flatten this to check for and handle various errors (wrong pass, user exists, etc)
