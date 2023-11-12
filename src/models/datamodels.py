@@ -45,7 +45,7 @@ class ItemNoId(BaseModel):
     price: float | None = None
     desc: str | None = None
     tag: str | None = None
-    seller: uuid.UUID | None = None
+    seller_id: uuid.UUID | None = None
     sku: str | None = None
 
 
