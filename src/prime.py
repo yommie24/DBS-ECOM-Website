@@ -2,7 +2,7 @@ import aiosqlite
 import dotenv
 from fastapi import FastAPI, staticfiles
 
-from .routers import main, user, item
+from .routers import main, user, item, scrape
 
 
 app = FastAPI()
@@ -12,6 +12,7 @@ app.mount("/static", staticfiles.StaticFiles(directory="src/Website"), name="pag
 app.include_router(main.router)
 app.include_router(user.router)
 app.include_router(item.router)
+app.include_router(scrape.router)
 
 
 @app.on_event("startup")
@@ -58,4 +59,16 @@ async def make_db(path: str):
                          "price REAL,"
                          "tag TEXT,"
                          "FOREIGN KEY(item_id) REFERENCES item(item_id)"
+                         ")")
+        await db.execute("CREATE TABLE IF NOT EXISTS news ("
+                         "time TEXT NOT NULL,"
+                         "title TEXT NOT NULL,"
+                         "content TEXT,"
+                         "thumbnail TEXT,"
+                         "source TEXT NOT NULL"
+                         ")")
+        await db.execute("CREATE TABLE IF NOT EXISTS tracking ("
+                         "url TEXT NOT NULL,"
+                         "frequency INTEGER NOT NULL,"
+                         "selector TEXT NOT NULL"
                          ")")
