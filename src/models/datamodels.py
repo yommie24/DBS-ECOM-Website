@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 import uuid
+import datetime
 
 
 class Token(BaseModel):
@@ -62,3 +63,18 @@ class ListedItem(BaseModel):
     thumbnail: str
     price: float
     tag: str | None = None
+
+
+class ScrapeTarget(BaseModel):
+    """A URL to scrape, time in minutes between requests, and the document selector to scrape data from"""
+    url: str
+    frequency: int
+    selector: str
+
+
+class ScrapedNews:
+    time: datetime.datetime
+    title: str
+    content: str | None = None
+    thumbnail: str | None = None
+    source: str
