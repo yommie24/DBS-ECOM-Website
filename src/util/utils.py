@@ -21,3 +21,7 @@ async def encode_token(data: dict):
 async def decode_token(token: OAuth2PasswordBearer("token")) -> datamodels.TokenData:
     inf = jose.jwt.decode(token, os.getenv("OPENSSL_SECRET"), algorithms=[os.getenv("OPENSSL_ALGO")])
     return datamodels.TokenData(email=inf.get("sub"), user_id=inf.get("id"))
+
+
+def get_webhook_url():
+    return os.getenv("WEBHOOK_URL")
