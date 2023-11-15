@@ -351,7 +351,7 @@
 
   // Get username cookie
   const username = getCookie('username');
-  if (username) {
+  
       // Select element to display username
       const userInfo = document.getElementById('user-info');
       const message = document.querySelector('.dropdown-content');
@@ -370,8 +370,6 @@
         }
         return ''; 
       }
-    
-    }
  });
 </script>
 <header>
@@ -394,7 +392,7 @@
                             <a href="Discord.html">Discord</a>
                         </li>
                     </ul>
-                    <div id="user-info"></div>
+                    
                     <form>
                         <div class="search-icon">
                             &#128270;
@@ -406,7 +404,7 @@
                             </button>
                             <!-- Create the dropdown content -->
                             <div class="dropdown-content">
-                                <a href="login.html">Log in</a>
+                                <a href="login.html"><div id="user-info"></div></a>
                             </div>
                         </div>
                     </form>
