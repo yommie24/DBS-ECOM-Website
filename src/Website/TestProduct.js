@@ -1,19 +1,16 @@
 document.onload = TestProduct();
 
 async function TestProduct() {
-    const item = await getItem();
-    displayItem(item);
+    const items = await getItem();
+    displayItem(items);
 
 }
-async function getItem() {
+async function getItems() {
 
     // Storing response
     const response = await fetch(window.location.origin + "/items/item/1");
-
-    // Storing data in form of JSON
-    var data = await response.json();
-    console.log(data);
-    return item;
+    const items = await response.json();
+    return items;
 }
 function buildItemChild(item) {
     let product = document.createElement("div");
@@ -30,7 +27,7 @@ function buildItemChild(item) {
 
 }
 
-function displayItem(item) {
+function displayItem(items) {
     console.log(items)
     var mainBody = document.getElementById("product");
     mainBody.appendChild(buildItemChild(items));
