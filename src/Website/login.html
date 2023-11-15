@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./login.js"></script>
+    <link rel="stylesheet" href="./browse.css">
+</head>
+
+<style>
+    .product {
+        box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        font-family: "Montserrat";
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .main_container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 30px;
+    }
+
+    .product img {
+        width: 100%;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+    }
+
+    .product_desc {
+        text-align: center;
+        padding: 20px 0px;
+    }
+
+    .product_desc h3 {
+        font-size: 24px;
+        padding: 10px 0px;
+    }
+
+    .product_desc p {
+        font-size: 18px;
+    }
+
+    .checked {
+        color: #ccee66;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans', sans-serif;
+        background: #ffffff;
+    }
+
+    nav {
+        color: #fff;
+        z-index: 90;
+        position: relative;
+    }
+
+    nav a,
+    header a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    nav .container {
+        max-width: 1150px;
+        padding: 1em 2em;
+        margin: 0 auto;
+    }
+
+    nav .container>div {
+        display: grid;
+        grid-template-columns: 1fr 6fr;
+        align-items: center;
+    }
+
+    nav .menu,
+    nav form,
+    .footer,
+    .footer .watch {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        display: inline-block;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin: 0 0.5em;
+    }
+
+    nav ul a {
+        font-size: 0.8em;
+        text-transform: uppercase;
+    }
+
+    nav form {
+        margin-right: 2em;
+    }
+
+    nav form input {
+        background: transparent;
+        color: #fff;
+        width: 12em;
+        Padding: 0.5em 1em;
+        border: none;
+        outline: none;
+    }
+
+    nav form input::placeholder {
+        color: #fff;
+    }
+
+    .logo {
+        width: 4em;
+        display: inline-block;
+    }
+
+    .nav-btn {
+        background: rgb(255, 255, 255);
+        color: #fff;
+        width: 2.8em;
+        height: 2.8em;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 1em;
+    }
+
+    .nav-btn:hover {
+        background: rgb(255, 255, 255);
+    }
+
+    nav .containter.menu-btn {
+        display: none;
+    }
+
+    header {
+        height: 15vh;
+        background: #090909;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+    }
+
+    .body {
+        display: grid;
+        justify-content: space-around;
+        align-content: center;
+        grid-template-columns: 2fr 3fr;
+        grid-gap: 2em;
+        height: 75%;
+        position: relative;
+        z-index: 1;
+        max-width: 1250px;
+        margin: 0 3em;
+        padding: 0 3em;
+    }
+
+    .body h1 {
+        font-size: 3.5em;
+        margin: 0.5em 0;
+    }
+
+    .body h4 {
+        font-size: 1.5em;
+        margin: 0.5em 0;
+    }
+
+    .body p {
+        letter-spacing: 2px;
+        line-height: 25px;
+        font-size: 0.9em;
+        margin: 2em 0 3em 0;
+        max-width: 45em;
+    }
+
+    .btn {
+        padding: 0.7em 1.5em;
+        background: #a3be52;
+        border-radius: 3em;
+        letter-spacing: 1px;
+        font-size: 1em;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #6e9623;
+    }
+
+    .body>div:nth-chid(2) {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .body .fas {
+        color: #fcc204
+    }
+
+    .body img {
+        width: 45em;
+        transform: rotate(-25deg);
+        filter: drop-shadow(30px 45px 40px #161616);
+    }
+
+    .footer {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 0 3em;
+        position: relative;
+    }
+
+    .footer a {
+        margin: 0 0.4em;
+        font-size: 1.2em;
+    }
+
+    .footer .play-icon {
+        border: 3px #fff soild;
+        border-radius: 50%;
+        width: 3em;
+        height: 3em;
+        text-align: center;
+        line-height: 3em;
+        font-size: 1.3em;
+        box-shadow: 0px 0px 15px #fff;
+        margin-right: 0.8em;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .footer .play-icon:hover {
+        background: rgb(255, 255, 255);
+        box-shadow: 0px 0px 0px transparent;
+
+    }
+
+    @media screen and (max-width: 1210px) {
+        nav {
+            margin-bottom: 2em;
+        }
+
+        .body {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        header::before {
+            display: none;
+        }
+
+        header {
+            height: initial;
+        }
+
+        .body>div:nth-child(2) {
+            justify-content: center;
+            margin: 3em 0;
+        }
+
+        .body img {
+            transform: none;
+        }
+
+        .body p {
+            margin: 2em auto 3em auto;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        html {
+            font-size: 14px;
+        }
+
+        .body img {
+            width: 90%;
+        }
+
+        .footer {
+            flex-direction: column;
+            margin-top: 3em;
+        }
+
+        .watch {
+            margin: 2em 0;
+            flex-direction: column;
+        }
+
+        .footer .play-icon {
+            margin: 0;
+        }
+    }
+
+    @media screen and(max-height: 650px) {
+        header {
+            height: initial;
+        }
+
+        .footer {
+            margin: 4em auto 2em auto;
+        }
+
+    }
+</style>
+<script>
+
+    menuBtn.addEventListener("click", () => {
+        menu.classList.toggle('nav-toggle');
+    });
+    menuBtn.addEventListener("click", () => {
+        menu.classList.toggle('nav-toggle');
+    });
+    // Import the functions you need from the SDKs you need
+
+</script>
+<header>
+    <nav>
+        <div class="container">
+            <div>
+                <a href="https://ibb.co/bBJxkjY"><img src="https://i.ibb.co/bBJxkjY/IMG-4576-removebg-preview.png"
+                        alt="logo.png" border="0" height="50px" width="50px"></a>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <A HREF="Primetime.html">Home</A>
+                        </li>
+                        <li>
+                            <a href="#">Men</a>
+                        </li>
+                        <li>
+                            <a href="#">Women</a>
+                        </li>
+                        <li>
+                            <a href="#">Kids</a>
+                        </li>
+                        <li>
+                            <a href="#">Discord</a>
+                        </li>
+                    </ul>
+                    <form>
+                        <div class="search-icon">
+                            <i class="fas fas fa-search"></i>
+                        </div>
+                        <input type="text" class="search" placeholder="Search. . ." />
+                        <button class="nav-btn">
+                            <i class="" fas fa-cart-plus"></i>
+                            <img src="https://i.ibb.co/bBJxkjY/IMG-4576-removebg-preview.png" alt="logo.png" border="0"
+                                height="25px" width="25px">
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="footer">
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+
+    </div>
+</header>
+
+<body>
+    <form>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button type="button" onclick="loginUser()">Login</button>
+        <button type="button" onclick="RegisterUser()">Register</button>
+    </form>
+
+
+</body>
+
+</html>
