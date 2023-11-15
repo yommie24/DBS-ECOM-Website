@@ -11,7 +11,7 @@ async function getItem() {
     const response = await fetch(window.location.origin + "/items/item/1");
 
     // Storing data in form of JSON
-    var data = await response.json();
+    const item = await response.json();
     console.log(data);
     return item;
 }
