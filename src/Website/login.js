@@ -10,7 +10,15 @@ async function loginUser() {
   const response = await fetch("http://127.0.0.1:8000/token", {
     method: "POST",
     body: formData
-  });
+  }).then(response => {
+    if (response.ok) {
+        // Login successful - redirect or show message
+        window.location.href = '/dashboard';
+    } else {
+        // Login failed - show error 
+        alert('Invalid email or password');
+    }
+});
 
   const data = await response.text();
 
@@ -21,5 +29,6 @@ async function loginUser() {
     // invalid credentials
     console.log("Invalid credentials");
   }
+  
 
 }
