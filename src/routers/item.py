@@ -77,7 +77,7 @@ async def make_item(item) -> int:
     async with aiosqlite.connect("./prime.db") as db:
         cursor = await db.execute("INSERT INTO item (name, image, price, description, seller_id, tag, sku) "
                                   "VALUES (?, ?, ?, ?, ?, ?, ?)", (
-                                      item.name, item.image, item.price, item.desc, item.seller, item.tag, item.sku,
+                                      item.name, item.image, item.price, item.desc, item.seller_id, item.tag, item.sku,
                                     ))
         await db.commit()
         return cursor.lastrowid
