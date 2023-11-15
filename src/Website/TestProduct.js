@@ -13,10 +13,6 @@ async function getItem() {
     // Storing data in form of JSON
     var data = await response.json();
     console.log(data);
-    if (response) {
-        hideloader();
-    }
-    show(data);
 }
 function buildItemChild(item) {
     let product = document.createElement("div");
