@@ -30,7 +30,7 @@ function buildItemChild(item) {
 function displayItem(item) {
     console.log(item)
     var mainBody = document.getElementById("product");
-    items.forEach(item => {
+    item.forEach(item => {
         mainBody.appendChild(
             buildItemChild(item)
         );
