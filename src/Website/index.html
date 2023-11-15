@@ -8,22 +8,25 @@
         background: #333;
     }
 
-    nav{
+    nav {
         color: #fff;
         z-index: 90;
         position: relative;
     }
-    nav a, header a {
+
+    nav a,
+    header a {
         color: #fff;
         text-decoration: none;
     }
-    nav .container{
+
+    nav .container {
         max-width: 1150px;
         padding: 1em 2em;
         margin: 0 auto;
     }
 
-    nav .container > div {
+    nav .container>div {
         display: grid;
         grid-template-columns: 1fr 6fr;
         align-items: center;
@@ -33,28 +36,33 @@
     nav form,
     .footer,
     .footer .watch {
-        display:flex;
+        display: flex;
         justify-content: space-between;
         align-items: center;
 
     }
+
     nav ul {
-        list-style-type:none;
+        list-style-type: none;
         padding: 0;
         display: inline-block;
     }
+
     nav ul li {
         display: inline-block;
         margin: 0 0.5em;
     }
+
     nav ul a {
         font-size: 0.8em;
         text-transform: uppercase;
     }
-    nav form{
+
+    nav form {
         margin-right: 2em;
     }
-    nav form input{
+
+    nav form input {
         background: transparent;
         color: #fff;
         width: 12em;
@@ -62,17 +70,18 @@
         border: none;
         outline: none;
     }
+
     nav form input::placeholder {
         color: #fff;
     }
+
     .logo {
         width: 4em;
         display: inline-block;
     }
-    .nav-btn{
-        background: rgba(
-            255, 255, 255, 0.3
-        );
+
+    .nav-btn {
+        background: rgba(255, 255, 255, 0.3);
         color: #fff;
         width: 2.8em;
         height: 2.8em;
@@ -83,46 +92,48 @@
         transition: 0.3s;
         font-size: 1em;
     }
+
     .nav-btn:hover {
-        background: rgba(
-                    255, 255, 255, 0.3
-                );
+        background: rgba(255, 255, 255, 0.3);
     }
+
     nav .containter.menu-btn {
         display: none;
     }
-    header{
+
+    header {
         height: 100vh;
         background: #090909;
         position: relative;
         overflow: hidden;
         color: #fff;
     }
+
     header::before {
         content: " ";
         position: absolute;
         top: 0;
         right: -10em;
-        background: linear-gradient(
-            45deg, #74F854, #6e9623
-        );
+        background: linear-gradient(45deg, #74F854, #6e9623);
         width: 100%;
         height: 120%;
         transform: rotate(70deg);
         z-index: 0;
     }
-    header::after{
+
+    header::after {
         content: 'PT';
         position: absolute;
         top: 50%;
         left: 60%;
         transform: translate(-50%, -50%);
-        color: rgba(0,0,0,0.2);
-        font-size:50em;
-        font-weight:700;
-        z-index:0;
+        color: rgba(0, 0, 0, 0.2);
+        font-size: 50em;
+        font-weight: 700;
+        z-index: 0;
     }
-    .body{
+
+    .body {
         display: grid;
         justify-content: space-around;
         align-content: center;
@@ -135,14 +146,17 @@
         margin: 0 3em;
         padding: 0 3em;
     }
+
     .body h1 {
         font-size: 3.5em;
         margin: 0.5em 0;
     }
-    .body h4{
+
+    .body h4 {
         font-size: 1.5em;
         margin: 0.5em 0;
     }
+
     .body p {
         letter-spacing: 2px;
         line-height: 25px;
@@ -150,6 +164,7 @@
         margin: 2em 0 3em 0;
         max-width: 45em;
     }
+
     .btn {
         padding: 0.7em 1.5em;
         background: #74FF54;
@@ -158,34 +173,39 @@
         font-size: 1em;
         transition: 0.3s;
     }
+
     .btn:hover {
         background: #6e9623;
     }
-    .body > div:nth-chid(2) {
+
+    .body>div:nth-chid(2) {
         display: flex;
         justify-content: flex-end;
         align-items: center;
     }
+
     .body .fas {
         color: #fcc204
     }
+
     .body img {
         width: 45em;
         transform: rotate(-25deg);
-        filter: drop-shadow(
-            30px 45px 40px #161616
-        );
+        filter: drop-shadow(30px 45px 40px #161616);
     }
+
     .footer {
         max-width: 1250px;
         margin: 0 auto;
         padding: 0 3em;
         position: relative;
     }
-    .footer a{
+
+    .footer a {
         margin: 0 0.4em;
         font-size: 1.2em;
     }
+
     .footer .play-icon {
         border: 3px #fff soild;
         border-radius: 50%;
@@ -199,64 +219,131 @@
         transition: 0.3s;
         cursor: pointer;
     }
-    .footer .play-icon:hover{
-        background: rgba( 255, 255, 255, 0.5);
+
+    .footer .play-icon:hover {
+        background: rgba(255, 255, 255, 0.5);
         box-shadow: 0px 0px 0px transparent;
 
     }
-    
+
     @media screen and (max-width: 1210px) {
-        nav{
-            margin-bottom:2em;
+        nav {
+            margin-bottom: 2em;
         }
+
         .body {
             grid-template-columns: 1fr;
             text-align: center;
         }
+
         header::before {
-            display:none;
+            display: none;
         }
+
         header {
             height: initial;
         }
-        .body > div:nth-child(2) {
+
+        .body>div:nth-child(2) {
             justify-content: center;
             margin: 3em 0;
         }
+
         .body img {
             transform: none;
         }
+
         .body p {
             margin: 2em auto 3em auto;
         }
     }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Style the dropdown content (hidden by default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+    }
+
+    /* Style the dropdown links */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+
+    }
+
+    /* Change color on hover */
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+
+    }
+
+    .nav-btn:hover {
+        height: 10px;
+
+        .cornerbtn {
+            height: 0px;
+        }
+
+    }
+
     @media screen and (max-width: 800px) {
         html {
-            font-size:14px;
+            font-size: 14px;
         }
-        .body img{
+
+        .body img {
             width: 90%;
         }
+
         .footer {
             flex-direction: column;
             margin-top: 3em;
         }
+
         .watch {
             margin: 2em 0;
             flex-direction: column;
         }
+
         .footer .play-icon {
             margin: 0;
         }
     }
+
     @media screen and(max-height: 650px) {
         header {
             height: initial;
         }
+
         .footer {
             margin: 4em auto 2em auto;
         }
-        
+
     }
 </style>
 <script>
@@ -267,67 +354,68 @@
         menu.classList.toggle('nav-toggle');
     });
     // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCKzFh3OMZdU0JF2ic8imiGV5VLA4rPxLE",
-    authDomain: "primetime-1cf4d.firebaseapp.com",
-    projectId: "primetime-1cf4d",
-    storageBucket: "primetime-1cf4d.appspot.com",
-    messagingSenderId: "30980230047",
-    appId: "1:30980230047:web:ebee6f290ca2d497618baa",
-    measurementId: "G-SW8V5QLW94"
-  };
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyCKzFh3OMZdU0JF2ic8imiGV5VLA4rPxLE",
+        authDomain: "primetime-1cf4d.firebaseapp.com",
+        projectId: "primetime-1cf4d",
+        storageBucket: "primetime-1cf4d.appspot.com",
+        messagingSenderId: "30980230047",
+        appId: "1:30980230047:web:ebee6f290ca2d497618baa",
+        measurementId: "G-SW8V5QLW94"
+    };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
 </script>
 <header>
     <nav>
-       <div class = "container">
-        <div>
-            <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="50px" width="50px"></a>
-            <div class="menu">
-                <ul>
-                    <li>
-                        <A HREF="browse.html">Browsing</A>
-                    </li>
-                    <li>
-                        <a href="#">News</a>
-                    </li>
-                    <li>
-                        <a HREF="Instagram.html">Instagram</a>
-                    </li>
-                    <li>
-                        <a href="Discord.html">Discord</a>
-                    </li>
-                </ul>
-                <form>
-                    <div class = "search-icon">
-                        &#128270;
-                    </div>
-                    <input
-                        type="text"
-                        class="search"
-                        placeholder="Search. . ."
-                    />
-                    <button class="nav-btn">
-                        <i class="fas fa-cart-plus"></i>
-                        <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="25px" width="25px">
-                    </button>
-                </form>
-            </div> 
-      </div>
-     <div class="menu-btn">
-        <i class="fas fa-bars"></i>
-     </div>
-    </div>
+        <div class="container">
+            <div>
+                <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="50px" width="50px"></a>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <A HREF="browse.html">Browsing</A>
+                        </li>
+                        <li>
+                            <a href="#">News</a>
+                        </li>
+                        <li>
+                            <a HREF="Instagram.html">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="Discord.html">Discord</a>
+                        </li>
+                    </ul>
+                    <form>
+                        <div class="search-icon">
+                            &#128270;
+                        </div>
+                        <input type="text" class="search" placeholder="Search. . ." />
+                        <div class="dropdown">
+                            <button class="nav-btn">
+                                <img class="cornerbtn" src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="25px" width="25px">
+                            </button>
+                            <!-- Create the dropdown content -->
+                            <div class="dropdown-content">
+                                <a href="login.html">Log in</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
     </nav>
     <div class="body">
         <div>
@@ -339,24 +427,17 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
+            </div>
+            <p>
+                Primetime Footwear offers the hottest sneakers on the market
+                and the insight on how to get them yourself!
+            </p>
+            <a href="#" class="btn">Learn More</a>
         </div>
-        <p>
-            Primetime Footwear offers the hottest sneakers on the market
-            and the insight on how to get them yourself!
-        </p>
-        <a href="#" class="btn">Learn More</a>
-    </div>
-    <div>
-        <img src="https://i.ibb.co/v40VmPs/ezgif-com-webp-to-jpg-2-removebg.png" alt="placeholdershoe" border="0" width="100px" height="500px"></a>
-    </div>
-
-    <div class="footer">
-        <div class="social">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+        <div>
+            <img src="https://i.ibb.co/v40VmPs/ezgif-com-webp-to-jpg-2-removebg.png" alt="placeholdershoe" border="0"
+                width="100px" height="500px"></a>
         </div>
-        
-    </div>
 </header>
+
 </html>
