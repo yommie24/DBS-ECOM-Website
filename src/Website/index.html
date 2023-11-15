@@ -351,27 +351,28 @@
 
   // Get username cookie
   const username = getCookie('username');
-  
-  // Select element to display username
-  const userInfo = document.getElementById('user-info');
-  const message = document.querySelector('.dropdown-content');
-
-  // Set element text 
-  userInfo.textContent = `Logged in as ${username}`;
-  message.innerText = 'Sign out';
-  // Helper function to get cookie by name
-  function getCookie(name) {
-    const cookies = document.cookie.split(';');
-    for(let i = 0; i < cookies.length; i++) {
-      let cookie = cookies[i].trim();
-      if(cookie.startsWith(name)) {
-        return cookie.split('=')[1];
-      } 
+  if (username) {
+      // Select element to display username
+      const userInfo = document.getElementById('user-info');
+      const message = document.querySelector('.dropdown-content');
+    
+      // Set element text 
+      userInfo.textContent = `Logged in as ${username}`;
+      message.innerText = 'Sign out';
+      // Helper function to get cookie by name
+      function getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for(let i = 0; i < cookies.length; i++) {
+          let cookie = cookies[i].trim();
+          if(cookie.startsWith(name)) {
+            return cookie.split('=')[1];
+          } 
+        }
+        return ''; 
+      }
+    
     }
-    return ''; 
-  }
-
-});
+ });
 </script>
 <header>
     <nav>
