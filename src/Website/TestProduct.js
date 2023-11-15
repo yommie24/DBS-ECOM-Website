@@ -13,6 +13,7 @@ async function getItem() {
     // Storing data in form of JSON
     var data = await response.json();
     console.log(data);
+    return item;
 }
 function buildItemChild(item) {
     let product = document.createElement("div");
@@ -24,6 +25,8 @@ function buildItemChild(item) {
     price.innerText = "$" + item["price"]
     desc.appendChild(name);
     desc.appendChild(price);
+
+    return product;
 
 }
 
