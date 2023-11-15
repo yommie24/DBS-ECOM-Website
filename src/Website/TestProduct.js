@@ -1,7 +1,7 @@
 document.onload = TestProduct();
 
 async function TestProduct() {
-    const items = await getItem();
+    const items = await getItems();
     displayItem(items);
 
 }
