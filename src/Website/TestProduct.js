@@ -12,7 +12,7 @@ async function getItem() {
 
     // Storing data in form of JSON
     const item = await response.json();
-    console.log(data);
+    console.log(item);
     return item;
 }
 function buildItemChild(item) {
