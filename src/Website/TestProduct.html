@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <script>
+        async function getshoe() {
+   
+   // Storing response
+   const response = await fetch(window.location.origin + "/items/item/1");
+  
+   // Storing data in form of JSON
+   var data = await response.json();
+   console.log(data);
+   if (response) {
+       hideloader();
+   }
+   show(data);
+}
         let slideIndex = 1;
         showSlides(slideIndex);
 
@@ -387,17 +400,20 @@
         <nav>
            <div class = "headerC">
             <div>
-                <a href="https://ibb.co/bBJxkjY"><img src="https://i.ibb.co/bBJxkjY/IMG-4576-removebg-preview.png" alt="logo.png" border="0" height="50px" width="50px" ></a>
+                <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="50px" width="50px" ></a>
                 <div class="menu">
                     <ul>
                         <li>
-                            <A HREF="Primetime.html">Home</A>
+                            <A HREF="index.html">Home</A>
+                        </li>
+                        <li>
+                            <a href="browse.html">Browsing</a>
+                        </li>
+                        <li>
+                            <a href="Instagram.html">Instagram</a>
                         </li>
                         <li>
                             <a href="#">News</a>
-                        </li>
-                        <li>
-                            <a HREF="Instagram.html">Instagram</a>
                         </li>
                         <li>
                             <a href="Discord.html">Discord</a>
@@ -406,6 +422,7 @@
                     <form>
                         <div class = "search-icon">
                             <i class="fas fas fa-search"></i>
+                            &#128270;
                         </div>
                         <input
                             type="text"
@@ -414,7 +431,7 @@
                         />
                         <button class="nav-btn">
                             <i class="fas fa-cart-plus"></i>
-                            <img src="https://i.ibb.co/bBJxkjY/IMG-4576-removebg-preview.png" alt="logo.png" boarder="0" height="25px" width="25px">
+                            <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" boarder="0" height="25px" width="25px">
                         </button>
                     </form>
                 </div> 
