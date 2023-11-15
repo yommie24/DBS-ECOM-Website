@@ -1,5 +1,5 @@
 function loginUser() {
-    var email = document.getElementById("email").value;
+    var email = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
     fetch('http://127.0.0.1:8000/token', {
