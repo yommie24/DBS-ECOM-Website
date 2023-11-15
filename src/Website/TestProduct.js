@@ -24,7 +24,7 @@ function buildItemChild(item) {
     price.innerText = "$" + item["price"]
     desc.appendChild(name);
     desc.appendChild(price);
-
+    console.log(product);
     return product;
 
 }
