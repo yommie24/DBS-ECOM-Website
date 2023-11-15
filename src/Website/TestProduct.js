@@ -32,13 +32,7 @@ function buildItemChild(item) {
 function displayItem(items) {
     console.log(items)
     var mainBody = document.getElementById("product");
-    for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        
-        mainBody.appendChild(
-          buildItemChild(item)  
-        );
-      }
+    mainBody.appendChild(buildItemChild(items));
 }
 let slideIndex = 1;
 showSlides(slideIndex);
@@ -68,5 +62,3 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
 }
-
-
