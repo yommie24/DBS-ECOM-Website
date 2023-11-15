@@ -1,27 +1,24 @@
-function loginUser() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    const formData = new FormData();
-    formData.append('username', username); 
-    formData.append('password', password);
+async function loginUser() {
 
-    fetch('http://127.0.0.1:8000/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: formData
-    })
-        .then(response => {
-            if (response.ok) {
-                // Login successful - redirect or show message
-                window.location.href = '/dashboard';
-            } else {
-                // Login failed - show error 
-                alert('Invalid email or password');
-            }
-        })
-        .catch(error => {
-            console.error('Error logging in', error);
-        });
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  const response = await fetch("http://127.0.0.1:8000/token", {
+    method: "POST", 
+    body: new FormData() {
+      append('username', username),
+      append('password', password)
+    }
+  });
+
+  const data = await response.text();
+
+  if (data.includes('access_token')) {
+    // successful login
+    console.log("Login successful!"); 
+  } else {
+    // invalid credentials
+    console.log("Invalid credentials");
+  }
+
 }
