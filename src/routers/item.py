@@ -70,6 +70,7 @@ async def get_item(item_id: int) -> datamodels.Item:
         #     pass
         if not result:
             raise HTTPException(status_code=404, detail=f"An item with id {item_id} was not found.")
+        result["desc"] = result["description"]  # last second patchwork
         return datamodels.Item.model_validate(result)
 
 
@@ -121,7 +122,11 @@ async def fetch_all_items():
     async with aiosqlite.connect("./prime.db") as db:
         db.row_factory = utils.dict_factory
         cursor = await db.execute("SELECT * FROM item")
-        return [datamodels.Item.model_validate(item) for item in await cursor.fetchall()]
+        items = []
+        for item in await cursor.fetchall():
+            item["desc"] = item["description"]  # last second patchwork
+            items.append(datamodels.Item.model_validate(item))
+        return items
 
 
 async def delete_item(item_id: int):
