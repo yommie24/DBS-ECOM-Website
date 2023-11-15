@@ -347,29 +347,30 @@
     }
 </style>
 <script>
-    const username = getCookie('username'); 
+   document.addEventListener('DOMContentLoaded', () => {
 
-// Display username 
-const userInfo = document.getElementById('user-info');
-userInfo.innerText = `Logged in as ${username}`;
+  // Get username cookie
+  const username = getCookie('username');
+  
+  // Select element to display username
+  const userInfo = document.getElementById('user-info');
 
-// Helper function to get cookie by name
-function getCookie(name) {
-  // Split cookie string 
-  const cookies = document.cookie.split(';');
-
-  // Loop through cookies to find match
-  for(let i = 0; i < cookies.length; i++) {
-    let cookie = cookies[i].trim();
-    
-    // Check if cookie starts with name
-    if(cookie.startsWith(name)) {
-      return cookie.split('=')[1];  
+  // Set element text 
+  userInfo.textContent = `Logged in as ${username}`;
+  
+  // Helper function to get cookie by name
+  function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for(let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
+      if(cookie.startsWith(name)) {
+        return cookie.split('=')[1];
+      } 
     }
+    return ''; 
   }
 
-  return '';
-}
+});
 </script>
 <header>
     <nav>
