@@ -354,10 +354,11 @@
   
   // Select element to display username
   const userInfo = document.getElementById('user-info');
+  const message = document.querySelector('.dropdown');
 
   // Set element text 
   userInfo.textContent = `Logged in as ${username}`;
-  
+  message.innerText = 'Sign out';
   // Helper function to get cookie by name
   function getCookie(name) {
     const cookies = document.cookie.split(';');
@@ -392,7 +393,7 @@
                             <a href="Discord.html">Discord</a>
                         </li>
                     </ul>
-                    <div id="user-info">HI</div>
+                    <div id="user-info"></div>
                     <form>
                         <div class="search-icon">
                             &#128270;
