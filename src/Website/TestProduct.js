@@ -31,13 +31,9 @@ function buildItemChild(item) {
 }
 
 function displayItem(item) {
-    console.log(item)
+    console.log(items)
     var mainBody = document.getElementById("product");
-    item.forEach(item => {
-        mainBody.appendChild(
-            buildItemChild(item)
-        );
-    });
+    mainBody.appendChild(buildItemChild(items));
 }
 let slideIndex = 1;
 showSlides(slideIndex);
