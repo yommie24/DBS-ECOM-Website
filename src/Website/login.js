@@ -13,7 +13,8 @@ async function loginUser() {
   }).then(response => {
     if (response.ok) {
         // Login successful - redirect or show message
-        window.location.href = '/dashboard';
+        alert('Successful login')
+        window.location.href = '/static/index.html';
     } else {
         // Login failed - show error 
         alert('Invalid email or password');
