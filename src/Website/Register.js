@@ -17,10 +17,16 @@ async function RegisterUser() {
     formData.append('address', address);
     formData.append('contact', contact);
   
-    const response = await fetch("http://127.0.0.1:8000/register", {
-      method: "POST",
-      body: formData
-    }).then(response => {
+    const json = Object.fromEntries(formData.entries());
+
+  // Send JSON data to server
+  const response = await fetch("http://127.0.0.1:8000/register", {
+    method: "POST", 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(json) 
+  }).then(response => {
       if (response.ok) {
           // Login successful - redirect or show message
           alert('Successful Registeration')
