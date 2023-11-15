@@ -14,6 +14,7 @@ async function loginUser() {
     if (response.ok) {
         // Login successful - redirect or show message
         alert('Successful login')
+        sessionStorage.setItem('username', username);
         window.location.href = '/static/index.html';
     } else {
         // Login failed - show error 
