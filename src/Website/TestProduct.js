@@ -2,7 +2,8 @@ const itemId = document.cookie
   .split('; ')
   .find(row => row.startsWith('item_id='))
   .split('=')[1];
-fetch('http://127.0.0.1:8000/items/item/${itemId}')
+const url = `http://127.0.0.1:8000/items/item/`;
+fetch(url + itemId)
   .then(response => response.json())
   .then(data => {
 
