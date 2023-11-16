@@ -26,12 +26,8 @@ function buildShoeChild(shoe) {
 
     
     //         <img src="https://i.ibb.co/TWwhx3K/eef10c9cfc937ea3fcd0a62d018cd21d-removebg-preview.png" width="200px" height="200px">
-    let btn = document.createElement("button");
     let thumb = document.createElement("img");
     thumb.src = shoe.thumbnail;
-   thumb.addEventListener('click', () => {
-      window.location.href = 'TestProduct.html'; 
-    });
 
 
     //         <div class="product_desc">
@@ -46,6 +42,18 @@ function buildShoeChild(shoe) {
     price.innerText = "$" + shoe["price"]
     desc.appendChild(name);
     desc.appendChild(price);
+    const button = document.createElement('button');
+
+    // Set text content 
+    button.textContent = 'View Details';
+
+    // Add click event handler
+    button.addEventListener('click', () => {
+    window.location.href = 'TestProduct.html'; 
+    });
+
+    // Append button to DOM
+    document.body.appendChild(button);
     //             <div class = "rating">
     let rating = document.createElement("div")
     rating.setAttribute("class", "rating");
