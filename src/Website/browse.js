@@ -37,6 +37,9 @@ function buildShoeChild(shoe) {
     product.appendChild(link);
     //         <div class="product_desc">
     let desc = document.createElement("div");
+    desc.onclick = () => {
+      window.location.href = 'TestProduct.html';
+    };
     desc.setAttribute("class", "product_desc");
     //             <h3>Jordan 1</h3>
     let name = document.createElement("h3");
