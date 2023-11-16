@@ -20,7 +20,7 @@ async function getShoes() {
 }
 
 function buildShoeChild(shoe) {
-    const item_id= document.getElementById("item_id").value;
+ 
     // <div class="product">
     let product = document.createElement("div");
     product.setAttribute("class", "product");
