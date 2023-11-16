@@ -1,4 +1,15 @@
-fetch('http://127.0.0.1:8000/items/item/1')
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for(let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
+      if(cookie.startsWith(name)) {
+        return cookie.split('=')[1];
+      } 
+    }
+    return ''; 
+  }
+
+fetch('http://127.0.0.1:8000/items/item/'+getCookie(item_id))
   .then(response => response.json())
   .then(data => {
 
