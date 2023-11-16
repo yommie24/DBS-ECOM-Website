@@ -5,12 +5,15 @@ fetch('http://127.0.0.1:8000/items/item/1')
     // Get DOM elements to update 
     const nameSlot = document.getElementById('shoeName');
     const descriptionSlot = document.getElementById('desc');
-    const priceSlot = document.getElementById('price')
+    const priceSlot = document.getElementById('price');
+    const imageSlot = document.getElementById('image');
     
     // Update DOM elements with data
     nameSlot.innerText = data.name; 
     descriptionSlot.innerText = data.desc;
     priceSlot.innerText = "$"+data.price;
+    imageSlot.innerText = data.image;
+
 
   });
 // Next/previous controls
