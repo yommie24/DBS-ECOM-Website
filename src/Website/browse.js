@@ -40,10 +40,15 @@ function buildShoeChild(shoe) {
     //             <p>$250</p>
     let price = document.createElement("p");
     price.innerText = "$" + shoe["price"]
+
+    let button = document.createElement('button');
+    button.innerText = "View Details";
+
     desc.appendChild(name);
     desc.appendChild(price);
+    desc.appendChild(button);
     
-    const button = document.createElement('button');
+    
 
     let rating = document.createElement("div")
     rating.setAttribute("class", "rating");
@@ -63,26 +68,6 @@ function buildShoeChild(shoe) {
 
     return product;
 }
-button.textContent = 'View Details';
-button.onclick = () => {
-window.location.href = 'TestProduct.html';
-};
-
-// Product loop
-shoes.forEach(shoe => {
-
-    // Create product div
-    let product = document.createElement("div");
-
-    // Append product content
-
-    // Append button to product
-    product.appendChild(button);
-
-    // Append product to DOM
-    mainBody.appendChild(product);
-
-});
 
 function displayShoes(shoes) {
     console.log(shoes)
