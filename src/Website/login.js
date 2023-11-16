@@ -25,7 +25,7 @@ async function loginUser() {
   const data = await response.text();
 
   if (data.includes('access_token')) {
-    document.cookie = `username=${access_token}`;
+  
     console.log("Login successful!");
   } else {   
     // invalid credentials
