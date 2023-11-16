@@ -46,3 +46,24 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
 }
+function addCart() {
+
+  // Build the URL with item and quantity
+  const url = `http://127.0.0.1:8000/cart?item_id=${itemId}&quantity=1`;
+
+  // Make the POST request to add to cart
+  fetch(url, {
+    method: 'POST' 
+  })
+  .then(response => {
+    if(response.ok) {
+      alert('Item added to cart successfully!');  
+    } else {
+      alert('Error adding item to cart');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+}
