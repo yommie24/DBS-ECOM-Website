@@ -29,13 +29,9 @@ function buildShoeChild(shoe) {
     let btn = document.createElement("button");
     let thumb = document.createElement("img");
     thumb.src = shoe.thumbnail;
-    btn.appendChild(thumb);
-    btn.onclick = () => {
-        window.location.href = 'shoe-detail.html'; 
-    };
-      
-    // Append button to product
-    product.appendChild(btn);
+   thumb.addEventListener('click', () => {
+      window.location.href = 'TestProduct.html'; 
+    });
 
 
     //         <div class="product_desc">
