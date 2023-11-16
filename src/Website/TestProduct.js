@@ -1,40 +1,16 @@
-document.onload = TestProduct();
+fetch('http://127.0.0.1:8000/items/item/1')
+  .then(response => response.json())
+  .then(data => {
 
-async function TestProduct() {
-    const items = await getItems();
-    displayItem(items);
+    // Get DOM elements to update 
+    const nameSlot = document.getElementById('shoeName');
+    const descriptionSlot = document.getElementById('desc');
+    
+    // Update DOM elements with data
+    nameSlot.innerText = data.name; 
+    descriptionSlot.innerText = data.description;
 
-}
-async function getItems() {
-
-    // Storing response
-    const response = await fetch(window.location.origin + "/items/item/1");
-    const items = await response.json();
-    return items;
-}
-function buildItemChild(item) {
-    let product = document.createElement("div");
-    product.setAttribute("class", "product");
-    let name = document.createElement("h1");
-    name.innerText = item["name"]
-    //             <p>$250</p>
-    let price = document.createElement("h2");
-    price.innerText = "$" + item["price"]
-    desc.appendChild(name);
-    desc.appendChild(price);
-
-    return product;
-
-}
-
-function displayItem(items) {
-    console.log(items)
-    var mainBody = document.getElementById("product");
-    mainBody.appendChild(buildItemChild(items));
-}
-let slideIndex = 1;
-showSlides(slideIndex);
-
+  });
 // Next/previous controls
 function plusSlides(n) {
     showSlides(slideIndex += n);
