@@ -45,7 +45,6 @@ function buildShoeChild(shoe) {
     let button = document.createElement("button");
     button.innerText = "View Details";
     button.onclick = () => {
-      document.cookie = `item_id=${item_id}`;
       window.location.href = 'TestProduct.html';
     }; 
 
