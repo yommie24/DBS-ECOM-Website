@@ -41,7 +41,7 @@ function buildShoeChild(shoe) {
     let price = document.createElement("p");
     price.innerText = "$" + shoe["price"]
 
-    let button = document.createElement('button');
+    let button = document.createElement("button");
     button.innerText = "View Details";
 
     desc.appendChild(name);
