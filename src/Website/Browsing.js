@@ -45,7 +45,7 @@ function buildShoeChild(shoe) {
     let button = document.createElement("button");
     button.innerText = "View Details";
     button.addEventListener("click", () => {
-        document.cookie = `shoe_${shoe.id}=${shoe.id}`;
+        document.cookie = `shoe_${item.id}=${shoe.item_id}`;
       });
     button.onclick = () => {
       window.location.href = 'TestProduct.html';
