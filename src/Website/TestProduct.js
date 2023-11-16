@@ -9,7 +9,7 @@ fetch('http://127.0.0.1:8000/items/item/1')
     
     // Update DOM elements with data
     nameSlot.innerText = data.name; 
-    descriptionSlot.innerText = data.description;
+    descriptionSlot.innerText = data.desc;
     priceSlot.innerText = data.price;
 
   });
