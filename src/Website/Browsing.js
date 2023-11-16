@@ -20,6 +20,7 @@ async function getShoes() {
 }
 
 function buildShoeChild(shoe) {
+    const item_id= document.getElementById("item_id").value;
     // <div class="product">
     let product = document.createElement("div");
     product.setAttribute("class", "product");
@@ -44,6 +45,7 @@ function buildShoeChild(shoe) {
     let button = document.createElement("button");
     button.innerText = "View Details";
     button.onclick = () => {
+      document.cookie = `item_id=${item_id}`;
       window.location.href = 'TestProduct.html';
     }; 
 
