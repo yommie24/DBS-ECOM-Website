@@ -24,22 +24,23 @@ function buildShoeChild(shoe) {
     let product = document.createElement("div");
     product.setAttribute("class", "product");
 
-    let link = document.createElement("a");
-    link.href = "TestProduct.html"; 
+    
     //         <img src="https://i.ibb.co/TWwhx3K/eef10c9cfc937ea3fcd0a62d018cd21d-removebg-preview.png" width="200px" height="200px">
+    let btn = document.createElement("button");
     let thumb = document.createElement("img");
     thumb.src = shoe.thumbnail;
-    thumb.onclick = () => {
-      window.location.href = 'TestProduct.html';
+    btn.appendChild(thumb);
+    btn.onclick = () => {
+        window.location.href = 'shoe-detail.html'; 
     };
+      
+    // Append button to product
+    product.appendChild(btn);
 
-    link.appendChild(thumb);
-    product.appendChild(link);
+
     //         <div class="product_desc">
     let desc = document.createElement("div");
-    desc.onclick = () => {
-      window.location.href = 'TestProduct.html';
-    };
+    
     desc.setAttribute("class", "product_desc");
     //             <h3>Jordan 1</h3>
     let name = document.createElement("h3");
