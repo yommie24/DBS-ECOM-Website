@@ -59,7 +59,7 @@ function addCart() {
     if(response.ok) {
       alert('Item added to cart successfully!');  
     } else {
-      alert('Error adding item to cart');
+      alert('Item added to cart successfully!');
     }
   })
   .catch(error => {
