@@ -12,7 +12,7 @@ fetch('http://127.0.0.1:8000/items/item/1')
     nameSlot.innerText = data.name; 
     descriptionSlot.innerText = data.desc;
     priceSlot.innerText = "$"+data.price;
-    imageSlot.innerText = data.image;
+    imageSlot.src = data.image;
 
 
   });
