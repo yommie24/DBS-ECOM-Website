@@ -23,9 +23,15 @@ function buildShoeChild(shoe) {
     // <div class="product">
     let product = document.createElement("div");
     product.setAttribute("class", "product");
+
+    let link = document.createElement("a");
+    link.href = "TestProduct.html"; 
     //         <img src="https://i.ibb.co/TWwhx3K/eef10c9cfc937ea3fcd0a62d018cd21d-removebg-preview.png" width="200px" height="200px">
     let thumb = document.createElement("img");
     thumb.setAttribute("src", shoe["thumbnail"]);
+
+    link.appendChild(thumb);
+    product.appendChild(link);
     //         <div class="product_desc">
     let desc = document.createElement("div");
     desc.setAttribute("class", "product_desc");
