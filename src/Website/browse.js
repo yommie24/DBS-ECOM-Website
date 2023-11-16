@@ -28,7 +28,7 @@ function buildShoeChild(shoe) {
     link.href = "TestProduct.html"; 
     //         <img src="https://i.ibb.co/TWwhx3K/eef10c9cfc937ea3fcd0a62d018cd21d-removebg-preview.png" width="200px" height="200px">
     let thumb = document.createElement("img");
-    thumb.src = shoe["thumbnail"];
+    thumb.src = shoe.thumbnail;
     thumb.onclick = () => {
       window.location.href = 'TestProduct.html';
     };
