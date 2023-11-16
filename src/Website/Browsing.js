@@ -43,6 +43,9 @@ function buildShoeChild(shoe) {
 
     let button = document.createElement("button");
     button.innerText = "View Details";
+    button.onclick = () => {
+      window.location.href = 'TestProduct.html';
+    }; 
 
     desc.appendChild(name);
     desc.appendChild(price);
