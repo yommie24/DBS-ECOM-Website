@@ -1,4 +1,8 @@
-fetch('http://127.0.0.1:8000/items/item/1')
+const itemId = document.cookie
+  .split('; ')
+  .find(row => row.startsWith('item_id='))
+  .split('=')[1];
+fetch('http://127.0.0.1:8000/items/item/${itemId}')
   .then(response => response.json())
   .then(data => {
 
