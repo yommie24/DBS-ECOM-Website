@@ -1,13 +1,13 @@
 import aiosqlite
 import dotenv
 from fastapi import FastAPI, staticfiles
-
+from fastapi.middleware.cors import CORSMiddleware
 from .routers import main, user, item, scrape
 
 
 app = FastAPI()
 app.mount("/static", staticfiles.StaticFiles(directory="src/Website"), name="page")
-
+app.add_middleware(CORSMiddleware, allow_origins="*")
 
 app.include_router(main.router)
 app.include_router(user.router)
