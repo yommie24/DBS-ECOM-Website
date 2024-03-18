@@ -1,8 +1,6 @@
+<!DOCTYPE html>
 <html lang="en">
-
-
 <style>
-    
     .product{
         box-shadow: 0px 7px 7px rgba(0,0,0,0.1);
         box-sizing: border-box;
@@ -11,11 +9,10 @@
         margin: 0;
         
     }
-    
     .main_container{
         display: grid;
         grid-template-columns: auto auto auto auto;
-        gap: 30px;
+        gap: 5px;
     }
     .product img{
         width: 100%;
@@ -65,6 +62,7 @@
         align-items: center;
     }
 
+
     nav .menu,
     nav form,
     .footer,
@@ -106,7 +104,9 @@
         display: inline-block;
     }
     .nav-btn{
-        background: rgb(255, 255, 255);
+        background: rgba(
+            255, 255, 255, 0.3
+        );
         color: #fff;
         width: 2.8em;
         height: 2.8em;
@@ -118,17 +118,44 @@
         font-size: 1em;
     }
     .nav-btn:hover {
-        background: rgb(255, 255, 255);
+        background: rgba(
+                    255, 255, 255, 0.3
+                );
     }
     nav .containter.menu-btn {
         display: none;
     }
     header{
-        height: 12vh;
+        height: 100vh;
         background: #090909;
         position: relative;
         overflow: hidden;
         color: #fff;
+    }
+    header::before {
+        
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: -10em;
+        background: linear-gradient(
+            bottom, #74FF54, #090909
+        );
+        width: 100%;
+        height: 120%;
+        transform: rotate(70deg);
+        z-index: 0;
+    }
+    header::after{
+        content: 'PT';
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+        color: rgba(0,0,0,0.2);
+        font-size:50em;
+        font-weight:700;
+        z-index:0;
     }
     .body{
         display: grid;
@@ -160,7 +187,7 @@
     }
     .btn {
         padding: 0.7em 1.5em;
-        background: #a3be52;
+        background: #74FF54;
         border-radius: 3em;
         letter-spacing: 1px;
         font-size: 1em;
@@ -177,42 +204,29 @@
     .body .fas {
         color: #fcc204
     }
-    .body img {
-        width: 45em;
-        transfrom: rotate(-25deg);
-        filter: drop-shadow(
-            30px 45px 40px #161616
-        );
-    }
-    .footer {
-        max-width: 1250px;
-        margin: 0 auto;
-        padding: 0 3em;
-        position: relative;
-    }
-    .footer a{
-        margin: 0 0.4em;
-        font-size: 1.2em;
-    }
-    .footer .play-icon {
-        border: 3px #fff soild;
-        border-radius: 50%;
-        width: 3em;
-        height: 3em;
-        text-align: center;
-        line-height: 3em;
-        font-size: 1.3em;
-        box-shadow: 0px 0px 15px #fff;
-        margin-right: 0.8em;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-    .footer .play-icon:hover{
-        background: rgb(255, 255, 255);
-        box-shawdow: 0px 0px 0px transparent;
-
-    }
     
+    .boxes {
+     display: flex;
+     justify-content: space-between;
+     background: #090909;
+     color: #fff
+    }
+
+    .box {
+     text-align: center;
+     width: 30%;
+    }
+
+    .box img {
+     width: 100%;
+    }
+    .rounded {
+     border-radius: 10px;
+    }
+    .left-box {
+     margin-right: 50px;
+    }
+
     @media screen and (max-width: 1210px) {
         nav{
             margin-bottom:2em;
@@ -267,63 +281,85 @@
         
     }
 </style>
-<script>
-    const menu = document.querySelector(".menu");
-    const menuBtn = document.querySelector(".menu-btn");
 
-    menuBtn.addEventListener("click", () => {
-        menu.classList.toggle('nav-toggle');
-    });
-</script>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./Browsing.js"></script>
-    <link rel="stylesheet" href="./Browsing.css">
-</head>
 <header>
     <nav>
-        <div class="container">
-            <div>
-                <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0"
-                    height="50px" width="50px"></a>
-                <div class="menu">
-                    <ul>
-                        <li>
-                            <A HREF="index.html">Home</A>
-                        </li>
-                        <li>
-                            <a href="news.html">News</a>
-                        </li>
-                        <li>
-                            <a href="Instagram.html">Instagram</a>
-                        </li>
-                        <li>
-                            <a href="Discord2.html">Discord</a>
-                        </li>
-                    </ul>
-                    <form>
-                        <div class="search-icon">
-                            &#128270;
-                        </div>
-                        <input type="text" class="search" placeholder="Search. . ." />
-                        <button class="nav-btn">
-                            <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png"
-                                border="0" height="25px" width="25px">
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-</header>
-
-<body>
-    <div id="main_container">
-        
+       <div class = "container">
+        <div>
+            <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="50px" width="50px"></a>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="Browsing.html">Browsing</a>
+                    </li>
+                    <li>
+                        <a href="news.html">News</a>
+                    </li>
+                    <li>
+                        <a HREF="Instagram.html">Instagram</a>
+                    </li>
+                    
+                </ul>
+                <form>
+                    <div class = "search-icon">
+                        &#128270;
+                    </div>
+                    <input
+                        type="text"
+                        class="search"
+                        placeholder="Search. . ."
+                    />
+                    <button class="nav-btn">
+                        <img src="https://i.ibb.co/9yqqRjr/IMG-4576-removebg-preview-2.png" alt="logo.png" border="0" height="25px" width="25px">
+                    </button>
+                </form>
+            </div> 
+      </div>
     </div>
-</body>
+    </nav>
+    <div class="body">
+        <div>
+            <h4>&nbsp;</h4>
+            <h1>Primetime Discord</h1>
+
+        <p>
+            The Primetime Discord server serves as a community of sneaker enthusiasts in the greater atlanta area to get an inside scoop on how to cop the hottest shoes and deals. 
+        </p>
+        <a href="https://upgrade.chat/852640008980660274/p/primetimecooks?fbclid=IwAR09MEXd6cE-Q2mbfXLHDxlB0LopgqXWJYqpNxZGGow9tqaiIdFsjLoAEk0" class="btn">Join Now</a>
+    </div>
+    <div>
+        <img src="discord.jpg" alt="Screenshot-2023-11-13-at-10-22-57-AM" border="0" width="800px"></a><br /><a target='_blank'></a><br />
+    </div>
+    
+</header>
+<div class="boxes">
+
+    <div class="box">
+        <div class="left_box">
+            <img class="rounded" src="drops.jpg"> 
+            <div class="text">
+              <p>Get updates on the latest drops and deeper info</p>
+            </div>
+        </div>
+    </div>
+  
+    <div class="box">
+      <img class="rounded" src="WTS.jpg" height="305px">
+      <div class="text">
+         <p>Buy, Sell, and Trade shoes with other members to find your perfect pair</p>
+      </div>
+    </div>
+  
+    <div class="box">
+      <img class="rounded" src="monitors.jpg" height="305px">
+      <div class="text">
+         <p>See stock changes of both Online and Local stores before the drop</p>
+      </div>
+    </div>
+  
+  </div>
+
 </html>
