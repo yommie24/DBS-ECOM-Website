@@ -5,7 +5,7 @@
 ### Developers
 
 - Yonatan Teklu
-- Yuri
+- Uriel Benitez
 - Leah Cheong
 
 
