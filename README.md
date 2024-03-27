@@ -1,14 +1,13 @@
-# CSC-SWE-PrimeTime
+# DBS-ECOM
 
-## _An ecommerce platform for shoe lovers_
+## _An ecommerce platform
 
 ### Developers
 
 - Yonatan Teklu
-- Natania Tedla
+- Yuri
 - Leah Cheong
-- Amrith Balaguhan
-- Isaac Harris
+
 
 ### Project Structure
 
