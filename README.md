@@ -5,10 +5,9 @@
 ### Developers
 
 - Yonatan Teklu
-- Natania Tedla
+- Uriel Benitez
 - Leah Cheong
-- Amrith Balaguhan
-- Isaac Harris
+
 
 ### Project Structure
 
