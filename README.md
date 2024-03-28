@@ -1,6 +1,6 @@
-# CSC-SWE-PrimeTime
+# DBS-ECOM-Website
 
-## _An ecommerce platform for shoe lovers_
+## _An ecommerce platform dedicating to clothing_
 
 ### Developers
 
